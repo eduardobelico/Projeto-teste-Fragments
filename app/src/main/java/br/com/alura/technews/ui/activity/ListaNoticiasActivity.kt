@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import br.com.alura.technews.R
 import br.com.alura.technews.model.Noticia
-import br.com.alura.technews.ui.fragment.ListaNoticiasFragment
+import br.com.alura.technews.ui.fragments.ListaNoticiasFragment
 
 private const val TITULO_APPBAR = "Notícias"
 
