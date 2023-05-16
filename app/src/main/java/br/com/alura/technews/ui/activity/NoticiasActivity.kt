@@ -1,6 +1,7 @@
 package br.com.alura.technews.ui.activity
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -9,8 +10,6 @@ import br.com.alura.technews.model.Noticia
 import br.com.alura.technews.ui.activity.extensions.transacaoFragment
 import br.com.alura.technews.ui.fragments.ListaNoticiasFragment
 import br.com.alura.technews.ui.fragments.VisualizaNoticiaFragment
-
-
 
 class NoticiasActivity : AppCompatActivity() {
 
@@ -58,8 +57,13 @@ class NoticiasActivity : AppCompatActivity() {
         fragment.arguments = dados
 
         transacaoFragment {
-            addToBackStack(null)
-            replace(R.id.activity_noticias_container, fragment)
+            val container = if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                R.id.activity_noticias_container2
+            } else {
+                addToBackStack(null)
+                R.id.activity_noticias_container1
+            }
+            replace(container, fragment)
         }
     }
 
@@ -71,7 +75,7 @@ class NoticiasActivity : AppCompatActivity() {
 
     private fun abreListaNoticias() {
         transacaoFragment {
-            replace(R.id.activity_noticias_container, ListaNoticiasFragment())
+            replace(R.id.activity_noticias_container1, ListaNoticiasFragment())
         }
     }
 }
